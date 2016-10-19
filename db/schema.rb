@@ -11,17 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929185325) do
+ActiveRecord::Schema.define(version: 20161018153925) do
 
   create_table "members", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "last_name",  limit: 255
-    t.boolean  "gender",     limit: 1
-    t.string   "email",      limit: 255
-    t.integer  "status",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.date     "birth_date",             null: false
+    t.string   "name",               limit: 255
+    t.string   "last_name",          limit: 255
+    t.boolean  "gender",             limit: 1
+    t.string   "email",              limit: 255
+    t.integer  "status",             limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.date     "birth_date",                     null: false
+    t.string   "cover_file_name",    limit: 255
+    t.string   "cover_content_type", limit: 255
+    t.integer  "cover_file_size",    limit: 4
+    t.datetime "cover_updated_at"
   end
 
   create_table "payments", force: :cascade do |t|

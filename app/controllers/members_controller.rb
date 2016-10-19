@@ -9,8 +9,10 @@ class MembersController < ApplicationController
   #GET /members/id
   def show
     @member = Member.find(params[:id])
-    render json: @member
-  end
+    #render json: @member
+    end
+
+
 
   #GET /members/new
   def new
@@ -23,7 +25,7 @@ class MembersController < ApplicationController
                          last_name:params[:member][:last_name],
                          gender: params[:member][:gender] ,
                          email: params[:member][:email],
-                         status: 1)
+                         status: 1, birth_date: "1996-11-16", cover: params[:member][:cover])
 
     @member.save
     redirect_to @member
