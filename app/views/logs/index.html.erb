@@ -1,0 +1,14 @@
+<% @logs.each do |log| %>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Activity</th>
+      </tr>
+      <td>
+        <%= log.updated_at %>
+      </td>
+      <td>
+        <%= log.activity %>
+      </td>
+    </table>
+<% end %>

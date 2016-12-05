@@ -1,21 +1,22 @@
-class MembersController < ApplicationController
+class PaymentsController < ApplicationController
 
   #GET /members
   def index
-   @members = Member.all
+    @members = Member.all
     render json: @members
   end
 
   #GET /members/id
   def show
     @member = Member.find(params[:id])
-    end
+    #render json: @member
+  end
 
 
 
   #GET /members/new
   def new
-    @member = Member.new
+    @payment = Payment.new
   end
 
   #POST /members
@@ -27,7 +28,6 @@ class MembersController < ApplicationController
                          status: 1, birth_date: "1996-11-16", cover: params[:member][:cover])
 
     @member.save
-    Log.create(activity: "se da de alta un nuevo miembro: " + @member.name)
     redirect_to @member
 
   end

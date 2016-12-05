@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018153925) do
+ActiveRecord::Schema.define(version: 20161129220738) do
+
+  create_table "logs", force: :cascade do |t|
+    t.string   "activity",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -29,14 +35,30 @@ ActiveRecord::Schema.define(version: 20161018153925) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer  "membership", limit: 4, null: false
     t.integer  "amount",     limit: 4, null: false
     t.date     "validity",             null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "member_id",  limit: 4, null: false
+    t.integer  "membership", limit: 4
   end
 
   add_index "payments", ["member_id"], name: "index_payments_on_member_id", using: :btree
 
+  create_table "products", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "price",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "product_id", limit: 4
+  end
+
+  add_index "purchases", ["product_id"], name: "index_purchases_on_product_id", using: :btree
+
+  add_foreign_key "purchases", "products"
 end

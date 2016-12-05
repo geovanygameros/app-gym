@@ -1,0 +1,5 @@
+<% @purchases.each do |purchase| %>
+    <h1><%= purchase.created_at %></h1>
+    <h1><%= purchase.product.name %></h1>
+    <h1>$<%= purchase.product.price %></h1>
+<% end %>

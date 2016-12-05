@@ -13,4 +13,5 @@ class Member < ActiveRecord::Base
       GENDER_WOMEN => false
   }
 
+
 end

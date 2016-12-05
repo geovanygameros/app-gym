@@ -1,24 +1,35 @@
-<div style="width:80%; margin: 0 auto; ">
+<div class="container">
 <h1>Registrar miembro</h1>
+  <div class="row">
 <%= form_for (@member) do |f| %>
-    <div class="fiel">
-      <%= f.text_field :name, placeholder: "Nombre", class:"form-control"%>
+    <div class="input-field">
+      <i class="material-icons prefix">account_circle</i>
+      <%= f.text_field :name, class:"validate", :id=>"first_name", class:"validate"%>
+      <label for="name">First Name</label>
+
     </div>
-    <div class="fiel">
-      <%= f.text_field :last_name, placeholder: "Apellido", class:"form-control" %>
+      <div class="input-field">
+        <i class="material-icons prefix">account_circle</i>
+      <%= f.text_field :last_name, :id=>"last_name", class:"validate"%>
+        <label for="last_name">Last Name</label>
+
     </div>
-      <div class="fiel">
-        <%= f.text_field :email, placeholder: "Correo electrónico", class:"form-control" %>
+      <div class="input-field">
+        <i class="material-icons prefix">email</i>
+        <%= f.email_field :email, :id=>"email", class:"validate"%>
+        <label for="email" data-error="wrong" data-success="right">Email</label>
       </div>
       <div class="fiel">
         Fotografía: <%= f.file_field :cover %>
       </div>
+        <br>
 
-      <div class="fiel">
-        <%= f.select :gender, Member::MEMBER_GENDERS, class:"dropdown-menu" %>
+      <div class="input-field">
+        <%= f.collection_select(:member_id, :gender, Member::MEMBER_GENDERS)%>
       </div>
       <div class="fiel">
-        <%= f.submit "Registrar", class:"btn btn-default" %>
+        <%= f.submit "Registrar", class:"" %>
       </div>
 <% end %>
+    </div>
 </div>

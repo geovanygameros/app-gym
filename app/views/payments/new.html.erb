@@ -1,0 +1,21 @@
+<div style="width:80%; margin: 0 auto; ">
+  <h1>Registrar pago</h1>
+  <%= form_for (@member) do |f| %>
+      <div class="fiel">
+        <%= f.text_field :name, placeholder: "Nombre", class:"form-control"%>
+      </div>
+      <div class="fiel">
+        <%= f.text_field :last_name, placeholder: "Apellido", class:"form-control" %>
+      </div>
+      <div class="fiel">
+        <%= f.text_field :email, placeholder: "Correo electrónico", class:"form-control" %>
+      </div>
+
+      <div class="fiel">
+        <%= f.select :gender, Member::MEMBER_GENDERS, class:"dropdown-menu" %>
+      </div>
+      <div class="fiel">
+        <%= f.submit "Registrar", class:"btn btn-default" %>
+      </div>
+  <% end %>
+</div>
