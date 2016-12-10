@@ -3,4 +3,8 @@ class PurchasesController < ApplicationController
     @purchases = Purchase.all
     render json: @purchases
   end
+
+  def create
+
+  end
 end

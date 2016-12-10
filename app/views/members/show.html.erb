@@ -1,23 +1,49 @@
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <ul class="left">
+      <li>
+        <%= link_to members_path do %>
+            <i class="material-icons left">chevron_left</i>Back
+        <% end %>
+      </li>
+    </ul>
+    <a class="brand-logo center"><%= @member.full_name %></a>
+    <ul class="right">
+      <li>
+        <%= link_to edit_member_path(@member) do %>
+            <i class="material-icons left">mode_edit</i>Edit
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
   <div align="center">
-<h1> <%= @member.name %> <%= @member.last_name %> </h1>
-    <h1> <%= @member.status %> </h1>
-<div class="field">
+
+    <% if @member.status == 1%>
+    <h3 class="green">
+      Activo
+    </h3>
+        <% end %>
+        <% if @member.status == 0%>
+            <h3 class="red darken-4-text">
+              Membrecia vencida
+            </h3>
+    <% end %>
+
+
+  <div class="field">
   <%= image_tag @member.cover.url(:thumb)%>
 </div>
 <h5> <%= @member.email %> </h5>
-    <button type="button" class="btn btn-info btn-lg btn-block" id="btnRegistrarPago" >Registrar pago</button>
-    <div id="payment-form", style="display:none;">
-      <!--
-    <%= form_for @member do |f| %>
-        <div class="fiel">
-          <#%= f.collection_select :post, :payments, options_for_select(Payment::MEMBERSHIP), :id, Payment::MEMBERSHIP_PRICE, prompt: true%>
-          <h2 id="txtPrice"></h2>
-        </div>
+<br>
 
-
+    <%= link_to 'create_payment/' + @member.id.to_s, class:"btn", data: {confirm: 'Registrar pago?'} do %>
+    Registrar pago
     <% end %>
-    -->
+
+
     </div>
   </div>
 

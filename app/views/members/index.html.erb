@@ -1,4 +1,77 @@
-<% @members.each  do |member| %>
-    <h1> <%= member.name %> <%= member.last_name %> </h1>
-    <h5> <%= member.email %> </h5>
-<% end %>
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <ul class="left">
+      <li>
+        <%= link_to root_path do %>
+            <i class="material-icons left">chevron_left</i>Back
+        <% end %>
+      </li>
+    </ul>
+    <ul class="right">
+    <li>
+      <%= link_to root_path do %>
+
+          <i class="material-icons left">home</i>Inicio
+
+      <% end %>
+    </li>
+    </ul>
+    <a class="brand-logo center"> Miembros</a>
+  </div>
+</nav>
+
+<nav>
+  <div class="nav-wrapper grey lighten-2">
+    <%= form_tag members_path, :method => 'get' do %>
+        <div class="input-field">
+          <%= text_field_tag :search, params[:search], :type => "search" %>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+    <% end %>
+  </div>
+</nav>
+
+<div class="section row">
+  <table class="striped col l10 m10 s10 offset-l1 offset-s1 offset-m1">
+    <tr>
+      <th>Estatus</th>
+      <th>Nombre</th>
+      <th>Fotografia</th>
+      <th colspan="3"></th>
+    </tr>
+
+    <% @members.each do |member| %>
+        <tr>
+          <td>
+            <% if member.status == 1 %>
+            <i class="material-icons">done_all</i>
+                <% end %>
+            <% if member.status == 0 %>
+            <i class="material-icons">lock</i>
+                <% end%>
+          </td>
+          <td><%= member.full_name %></td>
+
+          <td> <%= image_tag member.cover.url(:thumb)%></td>
+          <td>
+            <%= link_to member_path(member), :class => "waves-effect waves-light btn blue col s5 l6 m8" do %>
+                <i class="material-icons left">remove_red_eye</i>Mostrar
+            <% end %>
+          </td>
+          <td>
+            <%= link_to member_path(member), method: :delete, data: {confirm: 'Estás seguro?'}, :class => "waves-effect waves-light btn red darken-1 col s5 l6 m8" do %>
+                <i class="material-icons left">delete</i>Eliminar
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<div class="fixed-action-btn">
+  <%= link_to new_member_path, class:"btn-floating btn-large waves-effect waves-light red" do %>
+      <i class="material-icons left">add</i>
+  <% end %>
+</div>

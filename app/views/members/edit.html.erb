@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>Editar miembro</h1>
+  <div class="row">
+    <%= form_for (@member) do |f| %>
+        <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
+          <%= f.text_field :name, class:"validate", :id=>"first_name", class:"validate"%>
+          <label for="name" class="active">First Name</label>
+
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
+          <%= f.text_field :last_name, :id=>"last_name", class:"validate"%>
+          <label for="last_name" class="active">Last Name</label>
+
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix">email</i>
+          <%= f.email_field :email, :id=>"email", class:"validate"%>
+          <label for="email" data-error="wrong" data-success="right" class="active">Email</label>
+          <div class="input-field">
+            <input name="group1" type="radio" id="test1", checked />
+            <label for="test1">Hombre</label>
+            <input name="group1" type="radio" id="test2"/>
+            <label for="test2">Mujer</label>
+          </div>
+          <br>
+          <br>
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Foto</span>
+              <%= f.file_field :cover %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Sube una foto de perfil">
+            </div>
+          </div>
+
+          <br>
+        </div>
+        <div class="fiel">
+          <%= f.submit "Ok", class:"btn red" %>
+        </div>
+    <% end %>
+  </div>
+</div>

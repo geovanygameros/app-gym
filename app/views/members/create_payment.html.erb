@@ -1,0 +1,31 @@
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <ul class="left">
+      <li>
+        <%= link_to member_path do %>
+            <i class="material-icons left">chevron_left</i>Back
+        <% end %>
+      </li>
+    </ul>
+    <a class="brand-logo center"><%= @member.full_name %></a>
+    <ul class="right">
+      <li>
+        <%= link_to edit_member_path(@member) do %>
+            <i class="material-icons left">mode_edit</i>Edit
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div align="center">
+<br><br>
+
+    <h2>Pago registrado</h2>
+
+  </div>
+</div>
+
+</div>
+

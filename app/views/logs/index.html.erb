@@ -1,8 +1,32 @@
-<% @logs.each do |log| %>
-    <table>
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <a class="brand-logo center">Registro de actividad</a>
+    <ul class="right">
+      <li>
+        <%= link_to root_path do %>
+
+            <i class="material-icons left">home</i>Inicio
+
+      <% end %>
+      </li>
+      <li>
+        <%= link_to members_path do %>
+
+            <i class="material-icons left">toc</i>Miembros
+
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br><br>
+<div class="container">
+
+    <table class="striped bordered">
+      <% @logs.each do |log| %>
       <tr>
-        <th>Date</th>
-        <th>Activity</th>
+        <th>Fecha</th>
+        <th>Actividad</th>
       </tr>
       <td>
         <%= log.updated_at %>
@@ -10,5 +34,6 @@
       <td>
         <%= log.activity %>
       </td>
+      <% end %>
     </table>
-<% end %>
+</div>

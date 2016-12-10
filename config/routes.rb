@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  root 'logs#index'
+  get 'welcome/index'
+
+  root 'welcome#index'
   get 'purchases/index'
 
   get 'products' => 'products#index'
 
+  get 'members/create_payment/:id' => 'members#create_payment'
+  resources :logs
   resources :members
-  get 'payments/new' => 'payments#new'
+  resources :payments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

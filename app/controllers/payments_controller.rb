@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
 
   #GET /members/id
   def show
-    @member = Member.find(params[:id])
+    @member = Member.find()
     #render json: @member
   end
 
@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
 
   #GET /members/new
   def new
-    @payment = Payment.new
+    @member = Member.find(params[:id])
   end
 
   #POST /members
@@ -30,5 +30,9 @@ class PaymentsController < ApplicationController
     @member.save
     redirect_to @member
 
+  end
+
+  def create_payment
+    @member = Member.find(params[:id])
   end
 end
